@@ -1,0 +1,90 @@
+<svg width="100%" viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+<style>
+  text { font-family: sans-serif; fill: #1a1a1a; }
+  .th { font-size: 14px; font-weight: 500; }
+  .ts { font-size: 12px; fill: #444; }
+</style>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.5"/>
+  </marker>
+  <marker id="tri" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M1 1L9 5L1 9Z" fill="white" stroke="#555" stroke-width="1.2"/>
+  </marker>
+</defs>
+<text class="th" x="340" y="28" text-anchor="middle" font-size="15">Bridge pattern — UML class diagram</text>
+<!-- Skill abstract -->
+<rect fill="#EEEDFE" stroke="#534AB7" x="40" y="50" width="200" height="74" rx="6" stroke-width="0.8"/>
+<line x1="40" y1="76" x2="240" y2="76" stroke="#534AB7" stroke-width="0.5"/>
+<text class="ts" x="140" y="68" text-anchor="middle" font-style="italic">abstract</text>
+<text class="th" x="140" y="87" text-anchor="middle">Skill</text>
+<line x1="40" y1="99" x2="240" y2="99" stroke="#534AB7" stroke-width="0.5"/>
+<text class="ts" x="48" y="112">+ cast(target: CombatNode)</text>
+<text class="ts" x="48" y="122"># resolvedDamage(): int</text>
+<!-- EffectImplementor interface -->
+<rect fill="#E1F5EE" stroke="#0F6E56" x="440" y="50" width="210" height="74" rx="6" stroke-width="0.8"/>
+<line x1="440" y1="76" x2="650" y2="76" stroke="#0F6E56" stroke-width="0.5"/>
+<text class="ts" x="545" y="68" text-anchor="middle">interface</text>
+<text class="th" x="545" y="87" text-anchor="middle">EffectImplementor</text>
+<line x1="440" y1="99" x2="650" y2="99" stroke="#0F6E56" stroke-width="0.5"/>
+<text class="ts" x="448" y="112">+ computeDamage(base): int</text>
+<text class="ts" x="448" y="122">+ getEffectName(): String</text>
+<!-- SingleTargetSkill -->
+<rect fill="#EEEDFE" stroke="#534AB7" x="40" y="190" width="200" height="58" rx="6" stroke-width="0.8"/>
+<line x1="40" y1="210" x2="240" y2="210" stroke="#534AB7" stroke-width="0.5"/>
+<text class="th" x="140" y="203" text-anchor="middle">SingleTargetSkill</text>
+<line x1="40" y1="226" x2="240" y2="226" stroke="#534AB7" stroke-width="0.5"/>
+<text class="ts" x="48" y="239">+ cast(target): void</text>
+<!-- AreaSkill -->
+<rect fill="#EEEDFE" stroke="#534AB7" x="40" y="318" width="200" height="58" rx="6" stroke-width="0.8"/>
+<line x1="40" y1="338" x2="240" y2="338" stroke="#534AB7" stroke-width="0.5"/>
+<text class="th" x="140" y="331" text-anchor="middle">AreaSkill</text>
+<line x1="40" y1="354" x2="240" y2="354" stroke="#534AB7" stroke-width="0.5"/>
+<text class="ts" x="48" y="367">+ cast(target): void</text>
+<!-- PhysicalEffect -->
+<rect fill="#E1F5EE" stroke="#0F6E56" x="440" y="190" width="175" height="58" rx="6" stroke-width="0.8"/>
+<line x1="440" y1="210" x2="615" y2="210" stroke="#0F6E56" stroke-width="0.5"/>
+<text class="th" x="527" y="203" text-anchor="middle">PhysicalEffect</text>
+<line x1="440" y1="226" x2="615" y2="226" stroke="#0F6E56" stroke-width="0.5"/>
+<text class="ts" x="448" y="239">multiplier: x1.0</text>
+<!-- FireEffect -->
+<rect fill="#FAECE7" stroke="#993C1D" x="440" y="276" width="175" height="50" rx="6" stroke-width="0.8"/>
+<line x1="440" y1="294" x2="615" y2="294" stroke="#993C1D" stroke-width="0.5"/>
+<text class="th" x="527" y="288" text-anchor="middle">FireEffect</text>
+<line x1="440" y1="308" x2="615" y2="308" stroke="#993C1D" stroke-width="0.5"/>
+<text class="ts" x="448" y="320">multiplier: x1.2</text>
+<!-- IceEffect -->
+<rect fill="#E6F1FB" stroke="#185FA5" x="440" y="348" width="175" height="50" rx="6" stroke-width="0.8"/>
+<line x1="440" y1="366" x2="615" y2="366" stroke="#185FA5" stroke-width="0.5"/>
+<text class="th" x="527" y="360" text-anchor="middle">IceEffect</text>
+<line x1="440" y1="380" x2="615" y2="380" stroke="#185FA5" stroke-width="0.5"/>
+<text class="ts" x="448" y="392">multiplier: x1.1</text>
+<!-- ShadowEffect -->
+<rect fill="#F1EFE8" stroke="#5F5E5A" x="440" y="420" width="175" height="50" rx="6" stroke-width="0.8"/>
+<line x1="440" y1="438" x2="615" y2="438" stroke="#5F5E5A" stroke-width="0.5"/>
+<text class="th" x="527" y="432" text-anchor="middle">ShadowEffect</text>
+<line x1="440" y1="452" x2="615" y2="452" stroke="#5F5E5A" stroke-width="0.5"/>
+<text class="ts" x="448" y="464">multiplier: x1.3</text>
+<!-- Bridge association: Skill has EffectImplementor -->
+<line x1="240" y1="87" x2="438" y2="87" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+<text class="ts" x="310" y="80" text-anchor="middle">effect (bridge)</text>
+<!-- SingleTargetSkill extends Skill -->
+<line x1="140" y1="190" x2="140" y2="126" stroke="#555" stroke-width="1" marker-end="url(#tri)"/>
+<!-- AreaSkill extends Skill -->
+<polyline points="140,318 140,126" fill="none" stroke="#555" stroke-width="1" marker-end="url(#tri)"/>
+<!-- PhysicalEffect implements EffectImplementor -->
+<line x1="527" y1="190" x2="527" y2="126" stroke="#555" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#tri)"/>
+<!-- FireEffect implements -->
+<polyline points="527,276 527,256 540,256 540,126" fill="none" stroke="#555" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#tri)"/>
+<!-- IceEffect implements -->
+<polyline points="527,348 527,326 554,326 554,126" fill="none" stroke="#555" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#tri)"/>
+<!-- ShadowEffect implements -->
+<polyline points="527,420 527,398 566,398 566,126" fill="none" stroke="#555" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#tri)"/>
+<!-- Legend -->
+<line x1="44" y1="495" x2="78" y2="495" stroke="#555" stroke-width="1" marker-end="url(#tri)"/>
+<text class="ts" x="84" y="499">extends (solid)</text>
+<line x1="220" y1="495" x2="254" y2="495" stroke="#555" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#tri)"/>
+<text class="ts" x="260" y="499">implements (dashed)</text>
+<line x1="420" y1="495" x2="454" y2="495" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+<text class="ts" x="460" y="499">has-a (association)</text>
+</svg>

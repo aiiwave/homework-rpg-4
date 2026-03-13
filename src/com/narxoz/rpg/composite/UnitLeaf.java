@@ -3,6 +3,7 @@ package com.narxoz.rpg.composite;
 import java.util.Collections;
 import java.util.List;
 
+// добавила этот абстрактный класс чтобы не писать одну и ту же логику дважды в HeroUnit и EnemyUnit
 public abstract class UnitLeaf implements CombatNode {
     private final String name;
     private int health;

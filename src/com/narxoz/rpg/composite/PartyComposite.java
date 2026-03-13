@@ -1,5 +1,6 @@
 package com.narxoz.rpg.composite;
 
+// добавила класс PartyComposite чтобы группа юнитов вела себя точно так же как одиночный юнит — то есть тоже реализует CombatNode, и RaidEngine не замечает разницы
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

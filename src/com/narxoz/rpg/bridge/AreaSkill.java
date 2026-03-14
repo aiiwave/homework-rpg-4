@@ -16,7 +16,6 @@ public class AreaSkill extends Skill {
 
     private void applyToLeaves(CombatNode node, int damage) {
         if (node.getChildren().isEmpty()) {
-            // leaf node
             if (node.isAlive()) {
                 node.takeDamage(damage);
                 System.out.println("    -> " + node.getName() + " takes " + damage + " dmg (HP left: " + node.getHealth() + ")");

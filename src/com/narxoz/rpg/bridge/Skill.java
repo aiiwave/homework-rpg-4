@@ -29,7 +29,6 @@ public abstract class Skill {
         return effect.computeDamage(basePower);
     }
 
-    /** Exposes resolved damage for demo/testing purposes. */
     public int resolvedDamagePublic() {
         return resolvedDamage();
     }

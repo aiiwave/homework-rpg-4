@@ -1,5 +1,6 @@
 package com.narxoz.rpg.bridge;
 
+//  добавлен IceEffect (x1.1)
 public class IceEffect implements EffectImplementor {
     @Override
     public int computeDamage(int basePower) {

@@ -1,5 +1,6 @@
 package com.narxoz.rpg.bridge;
 
+//  добавлен FireEffect (x1.2)
 public class FireEffect implements EffectImplementor {
     @Override
     public int computeDamage(int basePower) {

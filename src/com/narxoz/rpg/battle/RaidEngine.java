@@ -25,7 +25,7 @@ public class RaidEngine {
         int round = 0;
         final int MAX_ROUNDS = 100;
 
-        result.addLine("=== Raid begins: " + teamA.getName() + " vs " + teamB.getName() + " ===");
+        result.addLine("Raid begins: " + teamA.getName() + " vs " + teamB.getName());
 
         while (teamA.isAlive() && teamB.isAlive() && round < MAX_ROUNDS) {
             round++;
@@ -34,7 +34,7 @@ public class RaidEngine {
             // Team A attacks Team B
             result.addLine(teamA.getName() + " attacks " + teamB.getName() + ":");
             boolean critA = random.nextInt(100) < 10;
-            if (critA) result.addLine("  ** CRITICAL STRIKE! **");
+            if (critA) result.addLine("CRITICAL STRIKE!");
             teamASkill.cast(teamB);
             result.addLine("  " + teamB.getName() + " HP after: " + teamB.getHealth());
 
@@ -42,7 +42,7 @@ public class RaidEngine {
             if (teamB.isAlive()) {
                 result.addLine(teamB.getName() + " attacks " + teamA.getName() + ":");
                 boolean critB = random.nextInt(100) < 10;
-                if (critB) result.addLine("  ** CRITICAL STRIKE! **");
+                if (critB) result.addLine("CRITICAL STRIKE!");
                 teamBSkill.cast(teamA);
                 result.addLine("  " + teamA.getName() + " HP after: " + teamA.getHealth());
             }
@@ -56,7 +56,7 @@ public class RaidEngine {
         } else {
             result.setWinner("Draw");
         }
-        result.addLine("\n=== Battle over after " + round + " round(s). Winner: " + result.getWinner() + " ===");
+        result.addLine("\n Battle over after " + round + " round(s). Winner: " + result.getWinner());
         return result;
     }
 }

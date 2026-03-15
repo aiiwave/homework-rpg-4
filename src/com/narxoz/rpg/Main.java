@@ -7,25 +7,20 @@ import com.narxoz.rpg.composite.*;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("╔══════════════════════════════════════════════╗");
-        System.out.println("║   Homework 4 Demo: Bridge + Composite RPG    ║");
-        System.out.println("╚══════════════════════════════════════════════╝\n");
         demoBridge();
         demoComposite();
         demoRaid();
     }
 
-    // ── Part 1: Bridge ────────────────────────────────────────────────────────
     static void demoBridge() {
-        System.out.println("════════════ PART 1: BRIDGE PATTERN ════════════");
+        System.out.println("BRIDGE PATTERN");
 
         EffectImplementor physical = new PhysicalEffect();
         EffectImplementor fire     = new FireEffect();
         EffectImplementor ice      = new IceEffect();
         EffectImplementor shadow   = new ShadowEffect();
 
-        // Same skill with all 4 effects
-        System.out.println("\n[Same skill 'Slash' (base 20) — 4 different effects]");
+        System.out.println("\n[Same skill 'Slash'/4 different effects]");
         Skill[] slashes = {
             new SingleTargetSkill("Slash", 20, physical),
             new SingleTargetSkill("Slash", 20, fire),
@@ -36,14 +31,12 @@ public class Main {
             System.out.printf("  %-8s + %-10s -> %d dmg%n",
                 s.getSkillName(), s.getEffectName(), s.resolvedDamagePublic());
 
-        // Same effect with both skill types
         System.out.println("\n[Same effect 'Shadow' — SingleTarget vs Area (base 30)]");
         Skill sSingle = new SingleTargetSkill("Dark Bolt", 30, shadow);
         Skill sArea   = new AreaSkill(        "Dark Nova",  30, shadow);
         System.out.printf("  SingleTarget %-10s -> %d dmg%n", shadow.getEffectName(), sSingle.resolvedDamagePublic());
         System.out.printf("  Area         %-10s -> %d dmg (per target)%n", shadow.getEffectName(), sArea.resolvedDamagePublic());
 
-        // Full matrix 2 skill types × 4 effects
         System.out.println("\n[Full combination matrix: 2 skill types × 4 effects]");
         System.out.printf("  %-14s %-10s %-12s %-12s%n", "Skill", "Effect", "SingleTarget", "Area");
         System.out.println("  " + "─".repeat(52));
@@ -57,11 +50,9 @@ public class Main {
         }
     }
 
-    // ── Part 2: Composite ─────────────────────────────────────────────────────
     static void demoComposite() {
-        System.out.println("\n════════════ PART 2: COMPOSITE PATTERN ════════════");
+        System.out.println("\nCOMPOSITE PATTERN");
 
-        // Hero team (2 levels)
         HeroUnit warrior  = new HeroUnit("Arthas",    160, 35);
         HeroUnit paladin  = new HeroUnit("Uther",     130, 25);
         HeroUnit mage     = new HeroUnit("Jaina",      90, 50);
@@ -81,7 +72,6 @@ public class Main {
         heroes.add(frontHeroes);
         heroes.add(backHeroes);
 
-        // Enemy team (3 levels: RaidGroup → RaidGroup → PartyComposite → leaf)
         EnemyUnit goblin1  = new EnemyUnit("Goblin Scout",    60, 18);
         EnemyUnit goblin2  = new EnemyUnit("Goblin Shaman",   55, 22);
         EnemyUnit orc1     = new EnemyUnit("Orc Warrior",    130, 28);
@@ -106,7 +96,7 @@ public class Main {
         elites.add(warchief);
 
         RaidGroup enemies = new RaidGroup("Horde Raid");
-        enemies.add(horde);    // nested RaidGroup inside RaidGroup
+        enemies.add(horde);   
         enemies.add(elites);
 
         System.out.println("\n[Hero team hierarchy]");
@@ -118,16 +108,14 @@ public class Main {
         System.out.printf("%nAlliance — HP: %d, ATK: %d%n", heroes.getHealth(), heroes.getAttackPower());
         System.out.printf("Horde    — HP: %d, ATK: %d%n", enemies.getHealth(), enemies.getAttackPower());
 
-        // Demonstrate AOE on composite node
         System.out.println("\n[AOE 'Ice Storm' cast on Goblin Pack composite]");
         Skill iceStorm = new AreaSkill("Ice Storm", 30, new IceEffect());
         iceStorm.cast(goblins);
         System.out.println("Goblins alive: " + goblins.isAlive() + "  HP remaining: " + goblins.getHealth());
     }
 
-    // ── Part 3: Full Raid Simulation ──────────────────────────────────────────
     static void demoRaid() {
-        System.out.println("\n════════════ PART 3: RAID SIMULATION ════════════");
+        System.out.println("\nRAID SIMULATION");
 
         HeroUnit warrior = new HeroUnit("Arthas",   160, 35);
         HeroUnit mage    = new HeroUnit("Jaina",     90, 50);
@@ -167,8 +155,5 @@ public class Main {
 
         System.out.println("\n  Winner : " + result.getWinner());
         System.out.println("  Rounds : " + result.getRounds());
-        System.out.println("\n╔══════════════════════════════════════════════╗");
-        System.out.println("║              Demo Complete!                  ║");
-        System.out.println("╚══════════════════════════════════════════════╝");
     }
 }

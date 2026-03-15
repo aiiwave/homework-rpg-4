@@ -1,5 +1,6 @@
 package com.narxoz.rpg.battle;
 
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,7 +9,6 @@ public class RaidResult {
     private String winner;
     private int rounds;
     private final List<String> log = new ArrayList<>();
-
     public String getWinner() {
         return winner;
     }
